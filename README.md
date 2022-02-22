@@ -57,11 +57,6 @@ If you already have templates in your Amazon SES account and there are no templa
 steps:
   - name: Checking out the repo
     uses: actions/checkout@v2
-  - name: Setting up node
-    uses: actions/setup-node@v2
-    with:
-      node-version: '16'
-      cache: 'npm'
   - name: Synching email templates
     uses: sovy-app/amazon-ses-synch-action@v1
     with:

@@ -50,7 +50,7 @@ steps:
       node-version: '16'
       cache: 'npm'
   - name: Synching email templates
-    uses: sovy/amazon-ses-synch-action@v1
+    uses: sovy-app/amazon-ses-synch-action@v1
     with:
       templates_dir: ${{ github.workspace }}/templates/
       token: 60e77e49-8625-4b97-81ac-d573b6edbd36

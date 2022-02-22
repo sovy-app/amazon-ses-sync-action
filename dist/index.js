@@ -1976,7 +1976,7 @@ async function main() {
     core.info('Reading files...');
     const templateFiles = templateFileNames.map((fileName) => ({
       name: fileName,
-      content: fs.readFileSync(`${templatesDir}${fileName}`),
+      content: fs.readFileSync(`${templatesDir}${fileName}`, { encoding: 'utf8' }),
     }));
     core.info(`All ${templateFiles.length} files read successfully.`);
     core.info('.');

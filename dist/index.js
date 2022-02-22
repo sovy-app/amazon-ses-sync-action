@@ -4852,7 +4852,10 @@ async function main() {
     core.info('.');
 
     core.info('Deleting missing synced templates...');
-    await axios.post(`https://sovy.app/api/sync/${token}/clear`, templateFileNames.map(getNameFromFileName));
+    await axios.post(
+      `https://sovy.app/api/sync/${token}/clear`,
+      { templateNames: templateFileNames.map(getNameFromFileName) },
+    );
     core.info(`All missing synced templates successfully deleted from Amazon SES.`);
     core.info('.');
 

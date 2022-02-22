@@ -1,5 +1,4 @@
 const core = require('@actions/core');
-const styles = require('ansi-styles');
 const fs = require('fs');
 const axios = require('axios');
 
@@ -66,7 +65,7 @@ async function main() {
     }));
     core.info(`All ${emailTemplates.length} templates synched successfully.`);
     core.info('.');
-    core.info(`${styles.green.open}All good, we're done here!${styles.green.close}`);
+    core.info('\u001b[32mAll good, we\'re done here!');
   } catch (error) {
     core.setFailed(error.message);
   }

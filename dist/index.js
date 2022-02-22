@@ -4850,6 +4850,12 @@ async function main() {
     }));
     core.info(`All ${emailTemplates.length} templates synced successfully.`);
     core.info('.');
+
+    core.info('Deleting missing synced templates...');
+    await axios.post(`https://sovy.app/api/sync/${token}/clear`, templateFileNames.map(getNameFromFileName));
+    core.info(`All missing synced templates successfully deleted from Amazon SES.`);
+    core.info('.');
+
     core.info('\u001b[32mAll good, we\'re done here!');
   } catch (error) {
     core.setFailed(error.message);

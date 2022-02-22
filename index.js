@@ -1,6 +1,7 @@
 const core = require('@actions/core');
 const styles = require('ansi-styles');
 const fs = require('fs');
+const axios = require('axios');
 
 function getNameFromFileName(fileName) {
   const fileNameParts = fileName.split('.');
@@ -61,13 +62,7 @@ async function main() {
     core.info('Synching email templates...');
     await Promise.all(emailTemplates.map(template => {
       core.info(`Synching ${template.name}`);
-      return fetch(`https://sovy.app/api/synch/${token}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(template),
-      });
+      return axios.post(`https://sovy.app/api/synch/${token}`, template);
     }));
     core.info(`All ${emailTemplates.length} templates synched successfully.`);
     core.info('.');

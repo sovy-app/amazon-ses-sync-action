@@ -1944,9 +1944,10 @@ function getNameFromFileName(fileName) {
 }
 
 function getSubjectFromFileContent(content) {
-  const regexp = /<!-- subject:(.*)-->/gmi
+  const regexp = /<!-- subject:(.*)-->/mi
   const match = content.match(regexp);
-  return match.trim();
+  if (!match || match.length < 2 || !match[1]) return '';
+  return match[1].trim();
 }
 
 async function main() {

@@ -58,9 +58,9 @@ async function main() {
     });
     core.info(`All ${emailTemplates.length} files parsed successfully.`);
 
-    core.info('Synching email templates...');
+    core.info('Syncing email templates...');
     await Promise.all(emailTemplates.map(template => {
-      core.info(`Synching ${template.name}`);
+      core.info(`Syncing ${template.name}`);
       return axios.post(`https://sovy.app/api/sync/${token}`, template);
     }));
     core.info(`All ${emailTemplates.length} templates synced successfully.`);

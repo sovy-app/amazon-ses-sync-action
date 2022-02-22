@@ -3,7 +3,7 @@
   <a href="https://sovy.app" style="background: white; display: flex; align-items: center; justify-content: center; width: 200px; padding: 16px 24px; border-radius: 16px;">
     <img src="https://sovy.app/_next/image?url=%2Fsovy.svg&w=256&q=75" alt="Sovy.app">
   </a>
-  <h1 align="center">Amazon SES Synch Action</h1>
+  <h1 align="center">Amazon SES Sync Action</h1>
   <br />
   <br />
 </div>
@@ -23,7 +23,7 @@ ${{ github.workspace }}/templates/
 
 ### `token`
 
-**Required** A Sovy Github Synch Token generated inside the https://sovy.app dashboard.
+**Required** A Sovy Github Sync Token generated inside the https://sovy.app dashboard.
 
 ## How to prepare your repo
 
@@ -41,7 +41,7 @@ Each template file should contain a single email subject defined like this:
 1. Listing all files from the provided directory `templates_dir`.
 2. Reading contents of all found files.
 3. Parsing files' contents looking for the HTML comment containing a **subject**.
-4. Synching all templates with Amazon SES through Sovy using provided `token`.
+4. Syncing all templates with Amazon SES through Sovy using provided `token`.
 
 If a template with a specific name does not exist in your Amazon SES account, a new template will be created.
 
@@ -57,7 +57,7 @@ If you already have templates in your Amazon SES account and there are no templa
 steps:
   - name: Checking out the repo
     uses: actions/checkout@v2
-  - name: Synching email templates
+  - name: Syncing email templates
     uses: sovy-app/amazon-ses-sync-action@v1
     with:
       templates_dir: ${{ github.workspace }}/templates/

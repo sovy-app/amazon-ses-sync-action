@@ -1,11 +1,11 @@
-name: 'Sovy - Amazon SES Synch Action'
+name: 'Sovy - Amazon SES Sync Action'
 description: 'Synchronize email templates from within a Github repo with Amazon SES'
 inputs:
   templates_dir:
     description: 'A path to a directory where your email templates are stored'
     required: true
   token:
-    description: 'A Sovy Github Synch Token generated inside the https://sovy.app dashboard'
+    description: 'A Sovy Github Sync Token generated inside the https://sovy.app dashboard'
     required: true
 runs:
   using: 'node16'

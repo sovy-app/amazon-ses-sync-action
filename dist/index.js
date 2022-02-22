@@ -4843,12 +4843,12 @@ async function main() {
     });
     core.info(`All ${emailTemplates.length} files parsed successfully.`);
 
-    core.info('Synching email templates...');
+    core.info('Syncing email templates...');
     await Promise.all(emailTemplates.map(template => {
-      core.info(`Synching ${template.name}`);
-      return axios.post(`https://sovy.app/api/synch/${token}`, template);
+      core.info(`Syncing ${template.name}`);
+      return axios.post(`https://sovy.app/api/sync/${token}`, template);
     }));
-    core.info(`All ${emailTemplates.length} templates synched successfully.`);
+    core.info(`All ${emailTemplates.length} templates synced successfully.`);
     core.info('.');
     core.info('\u001b[32mAll good, we\'re done here!');
   } catch (error) {

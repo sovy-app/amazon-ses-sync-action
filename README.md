@@ -1,4 +1,14 @@
-# Sovy - Amazon SES Synch Action
+<br />
+<div align="center">
+  <a href="https://sovy.app" style="background: white; display: flex; align-items: center; justify-content: center; width: 200px; padding: 16px 24px; border-radius: 16px;">
+    <img src="https://sovy.app/_next/image?url=%2Fsovy.svg&w=256&q=75" alt="Sovy.app">
+  </a>
+  <h1 align="center">Amazon SES Synch Action</h1>
+  <br />
+  <br />
+</div>
+
+## What it does
 
 This action synchronizes email templates from within a Github repo with Amazon SES.
 
@@ -6,7 +16,10 @@ This action synchronizes email templates from within a Github repo with Amazon S
 
 ### `templates_dir`
 
-**Required** A path to a directory where your email templates are stored, e.g. `${{ github.workspace }}/templates/`.
+**Required** A path to a directory where your email templates are stored, e.g.:
+```
+${{ github.workspace }}/templates/
+```
 
 ### `token`
 

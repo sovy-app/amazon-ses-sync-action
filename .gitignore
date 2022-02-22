@@ -1,0 +1,11 @@
+node_modules
+.DS_Store
+npm-debug.log*
+*.swo
+*.swp
+.nyc_output
+*.log
+.vscode
+*.pem
+.env
+.idea

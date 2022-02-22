@@ -1,0 +1,27 @@
+{
+  "name": "amazon-ses-synch-action",
+  "version": "1.0.0",
+  "description": "This action synchronizes email templates from within a Github repo with Amazon SES.",
+  "main": "index.js",
+  "scripts": {
+    "build": "ncc build index.js -o dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sovy-app/amazon-ses-synch-action.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sovy-app/amazon-ses-synch-action/issues"
+  },
+  "homepage": "https://github.com/sovy-app/amazon-ses-synch-action#readme",
+  "dependencies": {
+    "@actions/core": "1.6.0",
+    "@actions/github": "5.0.0",
+    "@vercel/ncc": "0.33.3",
+    "ansi-styles": "6.1.0"
+  }
+}

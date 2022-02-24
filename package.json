@@ -1,7 +1,7 @@
 {
   "name": "amazon-ses-sync-action",
   "version": "1.0.0",
-  "description": "This action synchronizes email templates from within a Github repo with Amazon SES.",
+  "description": "This action uploads email templates from within a Github repo to Amazon SES.",
   "main": "index.js",
   "scripts": {
     "build": "ncc build index.js -o dist",

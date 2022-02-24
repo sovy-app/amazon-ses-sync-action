@@ -1,5 +1,5 @@
 name: 'Sovy - Amazon SES Sync Action'
-description: 'Synchronize email templates from within a Github repo with Amazon SES'
+description: 'Upload email templates from within a Github repo to Amazon SES'
 inputs:
   templates_dir:
     description: 'A path to a directory where your email templates are stored'

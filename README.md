@@ -10,7 +10,7 @@
 
 ## What it does
 
-This action synchronizes email templates from within a Github repo with Amazon SES.
+This action uploads email templates from within a Github repo to Amazon SES.
 
 ## Inputs
 
@@ -47,7 +47,7 @@ If a template with a specific name does not exist in your Amazon SES account, a 
 
 If a template with a specific name already exists, it will be updated.
 
-If a template that was synced through this Github Action before (created or updated) is now missing, it will be deleted from the Amazon SES as well.
+If a template that was uploaded through this Github Action before (created or updated) is now missing, it will be deleted from the Amazon SES as well.
 
 If you already have templates in your Amazon SES account and there are no templates with corresponding names inside your Github repo, those templates will stay untouched.
 

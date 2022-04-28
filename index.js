@@ -1,6 +1,13 @@
 const core = require('@actions/core');
 const fs = require('fs');
 const axios = require('axios');
+const PQueue = require('p-queue');
+
+const queue = new PQueue({
+  concurrency: 1,
+  intervalCap: 1,
+  interval: 500,
+});
 
 function getNameFromFileName(fileName) {
   const fileNameParts = fileName.split('.');
@@ -59,7 +66,7 @@ async function main() {
     core.info(`All ${emailTemplates.length} files parsed successfully.`);
 
     core.info('Syncing email templates...');
-    await Promise.all(emailTemplates.map(template => {
+    await queue.addAll(emailTemplates.map(template => {
       core.info(`Syncing ${template.name}`);
       return axios.post(`https://sovy.app/api/sync/${token}`, template);
     }));

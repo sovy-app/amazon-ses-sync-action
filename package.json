@@ -23,6 +23,6 @@
     "@actions/github": "5.0.0",
     "@vercel/ncc": "0.33.3",
     "axios": "0.26.0",
-    "p-queue": "7.2.0"
+    "queue": "6.0.2"
   }
 }

@@ -1,12 +1,12 @@
 const core = require('@actions/core');
 const fs = require('fs');
 const axios = require('axios');
-const PQueue = require('p-queue');
+const queue = require('queue');
 
-const queue = new PQueue({
+const q = queue({
   concurrency: 1,
-  intervalCap: 1,
-  interval: 500,
+  timeout: 10000,
+  results: [],
 });
 
 function getNameFromFileName(fileName) {
@@ -66,22 +66,27 @@ async function main() {
     core.info(`All ${emailTemplates.length} files parsed successfully.`);
 
     core.info('Syncing email templates...');
-    await queue.addAll(emailTemplates.map(template => {
+
+    q.push(...emailTemplates.map(template => {
       core.info(`Syncing ${template.name}`);
-      return axios.post(`https://sovy.app/api/sync/${token}`, template);
+      return () => axios.post(`https://sovy.app/api/sync/${token}`, template);
     }));
-    core.info(`All ${emailTemplates.length} templates synced successfully.`);
-    core.info('.');
+    q.start(async (err) => {
+      if (err) throw err;
 
-    core.info('Deleting missing synced templates...');
-    await axios.post(
-      `https://sovy.app/api/sync/${token}/clear`,
-      { templateNames: templateFileNames.map(getNameFromFileName) },
-    );
-    core.info(`All missing synced templates successfully deleted from Amazon SES.`);
-    core.info('.');
+      core.info(`All ${emailTemplates.length} templates synced successfully.`);
+      core.info('.');
 
-    core.info('\u001b[32mAll good, we\'re done here!');
+      core.info('Deleting missing synced templates...');
+      await axios.post(
+          `https://sovy.app/api/sync/${token}/clear`,
+          { templateNames: templateFileNames.map(getNameFromFileName) },
+      );
+      core.info(`All missing synced templates successfully deleted from Amazon SES.`);
+      core.info('.');
+
+      core.info('\u001b[32mAll good, we\'re done here!');
+    });
   } catch (error) {
     core.setFailed(error.message);
   }

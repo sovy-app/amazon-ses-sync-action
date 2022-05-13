@@ -47,7 +47,7 @@ If a template with a specific name does not exist in your Amazon SES account, a 
 
 If a template with a specific name already exists, it will be updated.
 
-If a template that was uploaded through this Github Action before (created or updated) is now missing, it will be deleted from the Amazon SES as well.
+If a template that was uploaded through this Github Action before (created or updated) is now missing, it will be deleted from the Amazon SES as well. You can disable this behavior by setting parameter `clear_missing` to `no`.
 
 If you already have templates in your Amazon SES account and there are no templates with corresponding names inside your Github repo, those templates will stay untouched.
 
@@ -58,8 +58,9 @@ steps:
   - name: Checking out the repo
     uses: actions/checkout@v2
   - name: Syncing email templates
-    uses: sovy-app/amazon-ses-sync-action@v1.1
+    uses: sovy-app/amazon-ses-sync-action@v1.2
     with:
       templates_dir: ${{ github.workspace }}/templates/
       token: 60e77e49-8625-4b97-81ac-d573b6edbd36
+      clear_missing: yes
 ```

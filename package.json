@@ -1,6 +1,6 @@
 {
   "name": "amazon-ses-sync-action",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "This action uploads email templates from within a Github repo to Amazon SES.",
   "main": "index.js",
   "scripts": {

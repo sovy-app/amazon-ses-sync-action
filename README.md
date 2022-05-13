@@ -58,7 +58,7 @@ steps:
   - name: Checking out the repo
     uses: actions/checkout@v2
   - name: Syncing email templates
-    uses: sovy-app/amazon-ses-sync-action@v1
+    uses: sovy-app/amazon-ses-sync-action@v1.1
     with:
       templates_dir: ${{ github.workspace }}/templates/
       token: 60e77e49-8625-4b97-81ac-d573b6edbd36

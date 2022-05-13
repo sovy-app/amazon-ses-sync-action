@@ -27,6 +27,7 @@ async function main() {
   try {
     const templatesDir = core.getInput('templates_dir');
     const token = core.getInput('token');
+    const clearMissing = core.getInput('clear_missing');
 
     if (!templatesDir) {
       core.setFailed('Input parameter templates_dir is missing.');
@@ -77,12 +78,16 @@ async function main() {
       core.info(`All ${emailTemplates.length} templates synced successfully.`);
       core.info('.');
 
-      core.info('Deleting missing synced templates...');
-      await axios.post(
-          `https://sovy.app/api/sync/${token}/clear`,
-          { templateNames: templateFileNames.map(getNameFromFileName) },
-      );
-      core.info(`All missing synced templates successfully deleted from Amazon SES.`);
+      if (clearMissing === 'yes') {
+        core.info('Deleting missing synced templates...');
+        await axios.post(
+            `https://sovy.app/api/sync/${token}/clear`,
+            {templateNames: templateFileNames.map(getNameFromFileName)},
+        );
+        core.info(`All missing synced templates successfully deleted from Amazon SES.`);
+      } else {
+        core.info('Skipped deleting missing synced templates because parameter "clear_missing" is set to "no".');
+      }
       core.info('.');
 
       core.info('\u001b[32mAll good, we\'re done here!');

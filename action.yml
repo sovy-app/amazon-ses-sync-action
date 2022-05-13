@@ -7,6 +7,10 @@ inputs:
   token:
     description: 'A Sovy Github Sync Token generated inside the https://sovy.app dashboard'
     required: true
+  clear_missing:
+    description: 'Accepts strings "yes" and "no". If set to "no" the action will not delete templates that were uploaded by this action before but are missing now. By default "yes".'
+    required: false
+    default: 'yes'
 runs:
   using: 'node16'
   main: 'dist/index.js'
